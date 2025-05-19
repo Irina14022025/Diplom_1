@@ -1,22 +1,30 @@
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 import praktikum.Burger;
 import praktikum.Ingredient;
 
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static praktikum.IngredientType.FILLING;
+import static org.mockito.Mockito.when;
 
+
+@RunWith(MockitoJUnitRunner.class)
 public class BurgerTest {
     private Burger burger;
-    Ingredient ingredient1 = new Ingredient(FILLING, "Котлета", 20.4f);
-    Ingredient ingredient2 = new Ingredient(FILLING, "Салат", 10.7f);
 
     @Before
     public void setUp() {
         burger = new Burger();
     }
+
+    @Mock
+    Ingredient ingredient1;
+    @Mock
+    Ingredient ingredient2;
 
     @Test
     public void addIngredientTest(){

@@ -9,19 +9,20 @@ import praktikum.Ingredient;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
-import static praktikum.IngredientType.FILLING;
 import static praktikum.IngredientType.SAUCE;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BurgerMockTest {
     private Burger burger;
-    Ingredient ingredient1 = new Ingredient(FILLING, "Котлета", 20.4f);
-    Ingredient ingredient2 = new Ingredient(FILLING, "Салат", 10.7f);
 
     @Mock
     Bun bun;
     @Mock
     Ingredient ingredient;
+    @Mock
+    Ingredient ingredient1;
+    @Mock
+    Ingredient ingredient2;
 
     @Before
     public void setUp() {
@@ -33,7 +34,9 @@ public class BurgerMockTest {
         burger.setBuns(bun);
         when(bun.getPrice()).thenReturn(30f);
         burger.addIngredient(ingredient1);
+        when(ingredient1.getPrice()).thenReturn(20.4f);
         burger.addIngredient(ingredient2);
+        when(ingredient2.getPrice()).thenReturn(10.7f);
         float expectedPrice = bun.getPrice() * 2 + ingredient1.getPrice() + ingredient2.getPrice();
         float actualPrice = burger.getPrice();
         assertEquals("Актуальная цена бургера не совпадает с ожидаемым результатом", expectedPrice, actualPrice, 0);

@@ -32,7 +32,7 @@ public class IngredientParamTest {
     }
 
     @Test
-    public void checkIngredientTypeTest(){
+    public void checkTypeIngredientTest(){
         Ingredient ingredient = new Ingredient(type, name, price);
         IngredientType actualType = ingredient.getType();
         assertEquals("Актуальный тип ингредиента не совпадает с ожидаемым результатом", expectedType, actualType);
